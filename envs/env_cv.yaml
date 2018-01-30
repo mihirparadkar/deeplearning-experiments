@@ -1,0 +1,13 @@
+name: cv
+channels:
+  - anaconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.6
+  - anaconda
+  - opencv
+  - pip:
+    - cupy
+    - chainer
+    - pyfftw
