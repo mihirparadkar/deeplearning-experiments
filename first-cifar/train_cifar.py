@@ -57,7 +57,7 @@ def main():
         'fitnet1': models.fitnet1.FitNet1(class_labels),
     }
 
-    model = L.Classifier(modelsdict[args.model_type])
+    model = L.Classifier(modelsdict[args.model_type], F.hinge)
 
     if args.gpu >= 0:
         # Make a specified GPU current

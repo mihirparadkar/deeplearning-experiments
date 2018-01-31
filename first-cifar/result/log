@@ -1,0 +1,11 @@
+[
+    {
+        "main/loss": NaN,
+        "main/accuracy": 0.10024376598465473,
+        "validation/main/loss": NaN,
+        "validation/main/accuracy": 0.10011942675159236,
+        "epoch": 1,
+        "iteration": 782,
+        "elapsed_time": 332.66567750799004
+    }
+]
