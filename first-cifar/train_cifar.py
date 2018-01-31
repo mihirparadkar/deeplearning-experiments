@@ -31,7 +31,7 @@ def main():
     parser.add_argument('--early-stopping', type=str,
                         help='Metric to watch for early stopping')
     parser.add_argument('--model-type', type=str,
-                        help='Type of model to fit', default='fitnet1')
+                        help='Type of model to fit', default='simple_linear')
     args = parser.parse_args()
 
     print('GPU: {}'.format(args.gpu))
@@ -55,9 +55,10 @@ def main():
 
     modelsdict = {
         'fitnet1': models.fitnet1.FitNet1(class_labels),
+        'simple_linear': models.simple_linear.SimpleLinear(class_labels),
     }
 
-    model = L.Classifier(modelsdict[args.model_type], F.hinge)
+    model = L.Classifier(modelsdict[args.model_type])
 
     if args.gpu >= 0:
         # Make a specified GPU current

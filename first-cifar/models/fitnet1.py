@@ -21,13 +21,16 @@ class FitNet1(chainer.Chain):
             self.fc1 = L.Linear(64, class_labels)
 
     def __call__(self, x):
-        for layer in (self.conv1_1, self.conv1_2, self.conv1_3):
-            x = F.elu(layer(x))
+        x = F.elu(self.conv1_1(x))
+        x = F.elu(self.conv1_2(x))
+        x = F.elu(self.conv1_3(x))
         x = F.max_pooling_2d(x, ksize=2)
-        for layer in (self.conv2_1, self.conv2_2, self.conv2_3):
-            x = F.elu(layer(x))
+        x = F.elu(self.conv2_1(x))
+        x = F.elu(self.conv2_2(x))
+        x = F.elu(self.conv2_3(x))
         x = F.max_pooling_2d(x, ksize=2)
-        for layer in (self.conv3_1, self.conv3_2, self.conv3_3):
-            x = F.elu(layer(x))
+        x = F.elu(self.conv3_1(x))
+        x = F.elu(self.conv3_2(x))
+        x = F.elu(self.conv3_3(x))
         x = F.average_pooling_2d(x, ksize=8)
         return self.fc1(x)
